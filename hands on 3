@@ -1,0 +1,92 @@
+import java.util.Scanner;
+public class Main {
+    static void pinVerification() {
+        while (attempt < 3) {
+
+            System.out.println("Enter your pin Number: ");
+            pin_Number = input.nextLine();
+
+            if (pin_Number.equals("1234")) {
+                System.out.println("Correct PIN!: ");
+                break;
+            } else {
+                System.out.println("Incorrect PIN.: ");
+                attempt++;
+            }
+        }
+
+        if (attempt == 3) {
+            System.out.println("Transaction Failed, good bye.: ");
+        } else {
+            transactionMenu();
+        }
+    }
+    static void transactionMenu() {
+        System.out.println("Transaction Menu:");
+        System.out.println("1 Balance inquiry");
+        System.out.println("2 Deposit");
+        System.out.println("3 Withdraw");
+        System.out.println("4 Exit");
+        System.out.println("Please enter your choice 1-4");
+
+        choice = input.nextLine();
+        switch (choice) {
+            case "1":
+                balanceInquiry();
+                break;
+            case "2":
+                depositTransaction();
+                break;
+            case "3":
+                withdrawTransaction();
+                break;
+            case "4":
+                exitTransaction();
+                break;
+        }
+    }
+    static void balanceInquiry() {
+        System.out.println("============================");
+        System.out.println("Balance Inquiry Transaction");
+        System.out.println("============================");
+        System.out.println("Your current balance: is: " + balance);
+    }
+
+    static void depositTransaction() {
+        System.out.println("============================");
+        System.out.println("Deposit Transaction");
+        System.out.println("============================");
+        System.out.println("Enter amount to deposit: ");
+
+        int deposit = input.nextInt();
+        balance = balance + deposit;
+
+        System.out.println("Your current balance is: " + balance);
+    }
+    static void withdrawTransaction() {
+        System.out.println("============================");
+        System.out.println("Withdraw Transaction");
+        System.out.println("============================");
+        System.out.println("Enter amount to Withdraw: ");
+
+        int withdraw = input.nextInt();
+        balance = balance - withdraw;
+        System.out.println("Your current balance is: " + balance);
+    }
+    static void exitTransaction() {
+        System.out.println("============================");
+        System.out.println("Exit transaction");
+        System.out.println("============================");
+        System.out.println("Thank you for banking with us");
+    }
+
+public static void main(String[] args) {
+    pinVerification();
+}
+    static Scanner input = new Scanner(System.in);
+    static int correctPin = 1234;
+    static int attempt = 0;
+    static int balance = 200000;
+    static String pin_Number;
+    static String choice;
+}
